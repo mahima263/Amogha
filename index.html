@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amogha Scholars Program | IIT Kanpur</title>
+<meta name="description" content="The Amogha Scholars Program makes quality education at IIT Kanpur more accessible to meritorious students from families with limited financial means. Established with the support of Amogha Welfare Foundation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: { DEFAULT: '#F7F1E8', 50: '#FCF9F4', 100: '#F7F1E8', 200: '#EFE4D6', 300: '#E6D6C3' },
+        brick: { DEFAULT: '#A83E24', 600: '#A83E24', 700: '#8F3219', 800: '#6E2611' },
+        cocoa: { DEFAULT: '#3A2118', 900: '#2A1710' },
+        ochre: { DEFAULT: '#B9873B', 500: '#B9873B', 600: '#9E7130' },
+        clay: { DEFAULT: '#EBC8B6', 100: '#F4E2D6', 200: '#EBC8B6', 300: '#DFAB92' },
+        ink: '#4A3A33'
+      },
+      fontFamily: {
+        display: ['Lato', 'system-ui', 'sans-serif'],
+        sans: ['Lato', 'system-ui', 'sans-serif']
+      },
+      boxShadow: {
+        card: '0 10px 30px -12px rgba(58,33,24,.18)',
+        lift: '0 24px 50px -20px rgba(58,33,24,.35)'
+      }
+    }
+  }
+}
+</script>
+<style>
+  :root { box-sizing: border-box; padding-top: env(safe-area-inset-top,0px); padding-bottom: env(safe-area-inset-bottom,0px); }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body { background:#F7F1E8; color:#4A3A33; -webkit-font-smoothing:antialiased; }
+  .font-display { letter-spacing:-.01em; }
+  .btn-primary { background:#A83E24; color:#fff; transition: background .25s ease, transform .25s ease, box-shadow .25s ease; }
+  .btn-primary:hover { background:#8F3219; box-shadow:0 14px 28px -12px rgba(168,62,36,.6); transform: translateY(-2px); }
+  .btn-white { background:#fff; color:#A83E24; transition: background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
+  .btn-white:hover { background:#FBEDE4; color:#8F3219; box-shadow:0 16px 32px -12px rgba(0,0,0,.45); transform: translateY(-2px); }
+  .nav-link { position:relative; }
+  .nav-link::after { content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:#A83E24; transition:width .3s ease; }
+  .nav-link:hover::after { width:100%; }
+  .logo-img { filter:none; }
+  #nav { background: linear-gradient(to bottom, rgba(42,23,16,.8), rgba(42,23,16,.45)); }
+  #nav::after { content:""; position:absolute; left:0; right:0; top:100%; height:48px; background: linear-gradient(to bottom, rgba(42,23,16,.45), rgba(42,23,16,0)); pointer-events:none; transition: opacity .3s; }
+  #nav.nav-scrolled::after { opacity:0; }
+  #nav.nav-scrolled { background: rgba(42,23,16,.96); backdrop-filter: blur(12px); box-shadow: 0 10px 30px -18px rgba(0,0,0,.6); }
+  #nav nav a { color:#fff; text-shadow: 0 1px 6px rgba(0,0,0,.35); }
+  .reveal { opacity:0; }
+  .grain { background-image: radial-gradient(rgba(168,62,36,.06) 1px, transparent 1px); background-size: 22px 22px; }
+
+  /* Eligibility cards (from ASGS theme) */
+  .elig-card { position:relative; background:#fff; border:1px solid #EFE4D6; border-left:5px solid; border-radius:18px; padding:26px 26px 24px; box-shadow:0 10px 30px -18px rgba(58,33,24,.18); transform-style:preserve-3d; will-change:transform; }
+  .elig-card.brick { border-left-color:#A83E24; } .elig-card.clay { border-left-color:#DFAB92; } .elig-card.ochre { border-left-color:#B9873B; }
+  .elig-head { display:flex; align-items:center; gap:16px; }
+  .elig-icon { width:58px; height:58px; border-radius:50%; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 12px 24px -12px rgba(58,33,24,.5); }
+  .brick .elig-icon { background:linear-gradient(140deg,#B9503A,#A83E24); } .clay .elig-icon { background:linear-gradient(140deg,#E8B69E,#D99C82); } .ochre .elig-icon { background:linear-gradient(140deg,#C9A05A,#B9873B); }
+  .elig-title { font-size:1.2rem; font-weight:700; color:#3A2118; line-height:1.25; }
+  .elig-body { margin-top:14px; font-size:15.5px; line-height:1.6; color:#4A3A33; }
+  .elig-body strong { color:#3A2118; }
+  .elig-card::after { content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none; background: radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(185,135,59,.10), transparent 45%); opacity:0; transition:opacity .3s; }
+  .elig-card.is-hover::after { opacity:1; }
+
+  /* Donor photo frame */
+  .donor-frame { position:relative; }
+  .donor-frame::before { content:""; position:absolute; inset:-14px -14px 14px 14px; border:2px solid #DFAB92; border-radius:28px; z-index:0; }
+  .donor-frame img { position:relative; z-index:1; }
+
+  /* Donor legacy cards */
+  .legacy-card { display:flex; gap:14px; align-items:flex-start; background:#fff; border:1px solid #EFE4D6; border-radius:16px; padding:18px 20px; box-shadow:0 10px 30px -18px rgba(58,33,24,.18); transition: transform .3s, box-shadow .3s, border-color .3s; }
+  .legacy-card:hover { transform: translateY(-4px); border-color:#DFAB92; box-shadow:0 22px 44px -22px rgba(58,33,24,.3); }
+  .legacy-icon { width:44px; height:44px; border-radius:50%; flex:0 0 auto; display:flex; align-items:center; justify-content:center; color:#fff; background:linear-gradient(140deg,#C9A05A,#B9873B); box-shadow:0 10px 20px -10px rgba(185,135,59,.6); }
+
+  /* About image frame */
+  .about-frame { position:relative; }
+  .about-frame::before { content:""; position:absolute; inset:18px -18px -18px 18px; border:2px solid #DFAB92; border-radius:30px; opacity:.7; pointer-events:none; }
+  .about-frame > div { position:relative; z-index:1; }
+
+  /* Benefits journey: support -> performance -> reward */
+  .journey-grid { align-items:stretch; }
+  .journey-step { position:relative; background:#fff; border:1px solid #EFE4D6; border-radius:20px; padding:30px 26px 28px; text-align:center; box-shadow:0 10px 30px -18px rgba(58,33,24,.18); transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .35s; }
+  .journey-step:hover { transform: translateY(-8px); border-color:#DFAB92; box-shadow:0 28px 56px -22px rgba(58,33,24,.35); }
+  .journey-icon { width:68px; height:68px; border-radius:50%; margin:0 auto; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 14px 28px -12px rgba(58,33,24,.5); transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .journey-step:hover .journey-icon { transform: scale(1.1) rotate(-4deg); }
+  .brick-bg { background:linear-gradient(140deg,#B9503A,#A83E24); } .ochre-bg { background:linear-gradient(140deg,#C9A05A,#B9873B); } .reward-bg { background:linear-gradient(140deg,#8F3219,#6E2611); }
+  .journey-title { margin-top:18px; font-size:1.2rem; font-weight:700; color:#3A2118; line-height:1.25; }
+  .journey-text { margin-top:10px; font-size:15.5px; line-height:1.6; color:#4A3A33; }
+  .journey-step-reward { background: linear-gradient(180deg,#FFF9F3,#FBEDE4); border-color:#EBC8B6; }
+  @media (min-width:768px) {
+    .journey-grid { gap:0; }
+    .journey-step { margin:0 14px; }
+    .journey-step:not(:last-child)::after { content:""; position:absolute; top:50%; right:-30px; width:32px; height:2px; background:linear-gradient(90deg,#DFAB92,#B9873B); }
+    .journey-step:not(:last-child)::before { content:""; position:absolute; top:50%; right:-34px; width:10px; height:10px; margin-top:-4px; border-top:2px solid #B9873B; border-right:2px solid #B9873B; transform:rotate(45deg); z-index:1; }
+  }
+
+  .footer-art { opacity:.3; -webkit-mask-image:linear-gradient(to right, transparent, #000 30%); mask-image:linear-gradient(to right, transparent, #000 30%); }
+  @media (hover:none) {
+    .elig-card:hover { transform:none; }
+    .elig-card.is-touch { transform: scale(.985); }
+  }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity:1 !important; } * { scroll-behavior:auto !important; } }
+</style>
+</head>
+<body class="font-sans">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-40 transition-all duration-300">
+  <div class="max-w-[1480px] mx-auto px-5 md:px-10 h-[80px] md:h-[88px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 text-white group">
+      <img src="images/gtu-logo-white.png" alt="IIT Kanpur — Greater Than Us" class="logo-img h-11 md:h-14 w-auto">
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm text-white/90">
+      <a href="#about" class="nav-link">About the Program</a>
+      <a href="#commitment" class="nav-link">The Donor</a>
+      <a href="#eligibility" class="nav-link">Eligibility</a>
+      <a href="#benefits" class="nav-link">Benefits</a>
+    </nav>
+    <a href="#contribute" class="hidden md:inline-flex btn-primary text-sm font-semibold px-5 py-2.5 rounded-full">Contribute Now</a>
+    <button id="menuBtn" class="lg:hidden text-white p-2" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="lg:hidden hidden bg-cocoa text-white px-6 py-4 space-y-3 text-sm">
+    <a href="#about" class="block">About the Program</a>
+    <a href="#commitment" class="block">The Donor</a>
+    <a href="#eligibility" class="block">Eligibility</a>
+    <a href="#benefits" class="block">Benefits</a>
+    <a href="#contribute" class="btn-primary block text-center w-full py-3 rounded-full font-semibold mt-2">Contribute Now</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative min-h-[92vh] lg:min-h-0 lg:aspect-[2048/768] flex items-end lg:items-center overflow-hidden bg-cocoa-900">
+  <div class="absolute inset-0">
+    <img id="heroImg" src="images/banner.jpg" alt="IIT Kanpur students studying together on the lawns in front of the library" class="w-full h-full object-cover object-[52%_bottom] lg:object-[center_bottom] scale-105">
+    <div class="absolute inset-0 bg-gradient-to-r from-cocoa-900/75 via-cocoa-900/30 to-transparent hidden lg:block"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-cocoa-900/40 via-transparent to-cocoa-900/35 hidden lg:block"></div>
+  </div>
+
+  <div class="relative max-w-[1480px] mx-auto px-5 md:px-10 pt-[54vh] pb-12 lg:pt-20 lg:pb-6 w-full grid lg:grid-cols-12 gap-10 items-end lg:items-center">
+    <div class="absolute inset-x-0 bottom-0 h-[78%] bg-gradient-to-t from-cocoa-900 via-cocoa-900/80 to-transparent lg:hidden"></div>
+    <div class="lg:col-span-5 text-white relative">
+      <h1 class="hero-el font-display font-bold leading-[1.05] text-[2.6rem] sm:text-5xl lg:text-[3rem] xl:text-[3.6rem] max-w-2xl drop-shadow-md">Amogha Scholars<br>Program</h1>
+      <p class="hero-el mt-4 font-display text-xl md:text-2xl text-clay-100 italic leading-snug">Enabling Potential. Empowering Futures.</p>
+      <div class="hero-el mt-7 flex flex-wrap gap-4">
+        <a href="#contribute" class="btn-primary px-7 py-3.5 rounded-full font-semibold inline-flex items-center gap-2">Contribute Now <span aria-hidden="true">→</span></a>
+        <a href="#about" class="px-7 py-3.5 rounded-full font-semibold border border-white/60 text-white hover:bg-white/10 transition">Learn more</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="bg-cream-50 overflow-hidden scroll-mt-20 py-12 md:py-16">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <div class="reveal lg:col-span-6 order-2 lg:order-1">
+      <h2 class="font-display text-3xl md:text-[2.4rem] font-bold text-cocoa leading-tight">Amogha Scholars Program</h2>
+      <p class="mt-3 font-display text-lg md:text-xl italic text-ochre">Enabling Potential. Empowering Futures.</p>
+      <span class="block mt-5 w-16 h-[3px] rounded-full bg-gradient-to-r from-brick to-ochre"></span>
+      <div class="mt-6 space-y-5 text-[17px] leading-relaxed text-ink/85">
+        <p>The Amogha Scholars Program aims to make quality education at IIT Kanpur more accessible to meritorious students from families with limited financial means. Established with the support of <strong class="text-cocoa">Amogha Welfare Foundation</strong>, the scholarship seeks to ease financial constraints, enabling students to focus on their education and make the most of the opportunities before them.</p>
+      </div>
+    </div>
+    <div class="reveal lg:col-span-6 order-1 lg:order-2">
+      <div class="about-frame">
+        <div class="img-zoom rounded-[26px] overflow-hidden shadow-lift aspect-[4/3]">
+          <img src="images/about.jpg" alt="IIT Kanpur students studying together on campus" class="w-full h-full object-cover object-center" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMITMENT / DONOR ============ -->
+<section id="commitment" class="bg-cream-200/60 py-16 md:py-24 relative overflow-hidden scroll-mt-20">
+  <div class="absolute inset-0 grain opacity-60 pointer-events-none"></div>
+  <div class="relative max-w-[1480px] mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+    <div class="lg:col-span-4 reveal flex justify-center lg:justify-start">
+      <figure class="max-w-[300px] sm:max-w-[340px] w-full">
+        <div class="donor-frame">
+          <img src="images/alok-vinod-agarwal.jpg" alt="Mr Alok Vinod Agarwal" class="w-full rounded-[22px] shadow-lift object-cover" loading="lazy">
+        </div>
+        <figcaption class="relative z-10 mt-6 text-center lg:text-left">
+          <p class="font-display font-bold text-cocoa text-lg">Mr Alok Vinod Agarwal</p>
+          <p class="text-sm text-ink/70">B.Tech (EE) 1979, IIT Kanpur &middot; Founder, Amogha Welfare Foundation</p>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="lg:col-span-8 reveal">
+      <h2 class="font-display text-3xl md:text-[2.4rem] font-bold text-cocoa leading-tight">A Commitment to Educational Equity</h2>
+      <div class="mt-6 space-y-5 text-[16px] leading-relaxed text-ink/85 max-w-3xl">
+        <p>The Amogha Scholars Program reflects the philanthropic vision of <strong class="text-cocoa">Mr Alok Vinod Agarwal</strong>, who completed his B.Tech in Electrical Engineering from IIT Kanpur in 1979 and IIM Ahmedabad, and the founder of Amogha Welfare Foundation.</p>
+        <p>His commitment to IIT Kanpur extends beyond his professional association with the Institute. He established the <strong class="text-cocoa">Class of 1979 Young Faculty Fellowship</strong>, supporting faculty across engineering and science departments, and has instituted multiple scholarships to support undergraduate students. Through these initiatives, he continues to contribute to academic excellence and expand access to educational opportunities.</p>
+      </div>
+      <!-- Legacy highlights: the donor's continuing contributions -->
+      <div class="mt-8 grid sm:grid-cols-2 gap-4 max-w-3xl stagger-grid">
+        <div class="legacy-card">
+          <span class="legacy-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></span>
+          <div>
+            <p class="font-bold text-cocoa leading-snug">Class of 1979 Young Faculty Fellowship</p>
+            <p class="mt-1 text-sm text-ink/75 leading-relaxed">Supporting faculty across engineering and science departments</p>
+          </div>
+        </div>
+        <div class="legacy-card">
+          <span class="legacy-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/><path d="M12 8v4l2.5 2.5"/></svg></span>
+          <div>
+            <p class="font-bold text-cocoa leading-snug">Multiple Undergraduate Scholarships</p>
+            <p class="mt-1 text-sm text-ink/75 leading-relaxed">Expanding access to educational opportunities at IIT Kanpur</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ELIGIBILITY ============ -->
+<section id="eligibility" class="py-16 md:py-24 bg-cream-100 relative overflow-hidden scroll-mt-20">
+  <div class="max-w-[1480px] mx-auto px-5 md:px-10 relative">
+    <div class="reveal text-center max-w-3xl mx-auto">
+      <h2 class="font-display text-3xl md:text-[2.4rem] font-bold text-cocoa leading-tight">Scholarship Eligibility</h2>
+      <p class="mt-4 text-[16px] leading-relaxed text-ink/85">The Amogha Scholars Program is open to eligible first-year undergraduate students at IIT Kanpur who meet the following criteria:</p>
+    </div>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-grid" id="eligGrid">
+
+      <article class="elig-card brick">
+        <div class="elig-head">
+          <span class="elig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 8v6"/></svg></span>
+          <h3 class="elig-title">Academic Merit</h3>
+        </div>
+        <p class="elig-body">Students with an <strong>All-India Rank (AIR) of 2,000 or better</strong> in the Open Category (Common Rank List) may apply.</p>
+      </article>
+
+      <article class="elig-card ochre">
+        <div class="elig-head">
+          <span class="elig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/><path d="M12 11h.01"/></svg></span>
+          <h3 class="elig-title">Family Income</h3>
+        </div>
+        <p class="elig-body">The Total Family Annual Income (TFAI) must be <strong>below ₹12 lakh</strong>.</p>
+      </article>
+
+      <article class="elig-card clay">
+        <div class="elig-head">
+          <span class="elig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 14l2 2 4-4"/></svg></span>
+          <h3 class="elig-title">Fee Waiver</h3>
+        </div>
+        <p class="elig-body">Applicants must <strong>not be receiving a fee waiver</strong> from the Institute.</p>
+      </article>
+
+      <article class="elig-card clay">
+        <div class="elig-head">
+          <span class="elig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.5 14.2 7 22l5-3 5 3-1.5-7.8"/><path d="m12 6 1 2 2.2.3-1.6 1.5.4 2.2-2-1.1-2 1.1.4-2.2L8.8 8.3 11 8z" fill="currentColor" stroke="none"/></svg></span>
+          <h3 class="elig-title">Other Scholarships</h3>
+        </div>
+        <p class="elig-body">Applicants must <strong>not be recipients of another donor-supported scholarship</strong>.</p>
+      </article>
+
+      <article class="elig-card brick sm:col-span-2">
+        <div class="elig-head">
+          <span class="elig-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8-4.3-4.1 5.9-.9z"/></svg></span>
+          <h3 class="elig-title">Selection Criteria</h3>
+        </div>
+        <p class="elig-body">Among eligible applicants, students with a <strong>comparatively higher AIR (better rank)</strong> will be given preference for scholarship selection.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section id="benefits" class="py-16 md:py-24 bg-cream-50 relative overflow-hidden scroll-mt-20">
+  <div class="absolute inset-0 grain opacity-60 pointer-events-none"></div>
+  <div class="relative max-w-[1480px] mx-auto px-5 md:px-10">
+    <div class="reveal text-center max-w-3xl mx-auto">
+      <h2 class="font-display text-3xl md:text-[2.4rem] font-bold text-cocoa leading-tight">Scholarship Benefits</h2>
+      <p class="mt-4 text-[16px] leading-relaxed text-ink/85">The scholarship supports students in pursuing their academic goals while recognising the importance of continued academic performance.</p>
+    </div>
+
+    <!-- The student's journey: support -> performance -> reward -->
+    <div class="mt-12 grid md:grid-cols-3 gap-6 stagger-grid journey-grid">
+
+      <article class="journey-step">
+        <span class="journey-icon brick-bg"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        <h3 class="journey-title">Scholarship Support</h3>
+        <p class="journey-text">A scholarship of <strong class="text-cocoa">₹2 lakh</strong>, covering <strong class="text-cocoa">100% of the tuition fee</strong>, easing financial constraints so that students can focus on their education and pursue their academic goals.</p>
+      </article>
+
+      <article class="journey-step">
+        <span class="journey-icon ochre-bg"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+        <h3 class="journey-title">Academic Performance</h3>
+        <p class="journey-text">Recipients who achieve a Cumulative Performance Index (CPI) of <strong class="text-cocoa">8.5 or above</strong> at the end of the academic year.</p>
+      </article>
+
+      <article class="journey-step journey-step-reward">
+        <span class="journey-icon reward-bg"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+        <h3 class="journey-title">Additional Reward</h3>
+        <p class="journey-text">May be considered for reimbursement towards living expenses equivalent to <strong class="text-cocoa">40% of the annual tuition fee</strong>.</p>
+      </article>
+
+    </div>
+
+    <p class="reveal mt-10 md:mt-12 text-center text-[14.5px] text-ink/70 italic max-w-2xl mx-auto">This additional benefit is subject to the donor&rsquo;s discretion and the applicable terms of the scholarship.</p>
+  </div>
+</section>
+
+<!-- ============ CONTRIBUTE (closing banner) ============ -->
+<section id="contribute" class="relative overflow-hidden bg-[#9E3E27] text-white scroll-mt-20">
+  <div class="absolute inset-0 overflow-hidden">
+    <img id="journeyImg" src="images/journey.jpg" alt="" class="absolute left-0 top-0 w-full h-[118%] object-cover object-[12%_center] lg:object-[left_center] will-change-transform" loading="lazy">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-b from-[#9E3E27]/20 via-[#9E3E27]/75 to-[#9E3E27]/90 lg:bg-gradient-to-r lg:from-[#9E3E27]/30 lg:via-[#9E3E27]/80 lg:to-[#9E3E27]/85"></div>
+  <div class="relative max-w-[1480px] mx-auto px-5 md:px-10 pt-44 pb-14 lg:py-20 grid lg:grid-cols-12 gap-8 items-center">
+    <div class="hidden lg:block lg:col-span-3"></div>
+    <div class="reveal lg:col-span-9 text-center lg:text-left">
+      <p class="font-display text-2xl md:text-[2rem] font-bold leading-snug drop-shadow max-w-3xl mx-auto lg:mx-0">Through the Amogha Scholars Program, a commitment to education becomes an opportunity for deserving students to realise their potential and shape their futures.</p>
+      <!-- TODO: set the donation link -->
+      <a href="#" class="btn-white mt-8 inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-base shadow-lift">Contribute Now <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-cocoa-900 text-white/80 relative overflow-hidden">
+  <img src="images/footer-art.png" alt="" aria-hidden="true" class="footer-art absolute right-0 bottom-0 w-[46%] max-w-[700px] pointer-events-none select-none hidden md:block">
+  <div class="relative max-w-[1480px] mx-auto px-5 md:px-10 pt-12 pb-16 md:pt-14 md:pb-32 grid md:grid-cols-3 gap-8 text-sm">
+    <div>
+      <img src="images/gtu-logo-white.png" alt="IIT Kanpur — Greater Than Us" class="logo-img h-14 w-auto">
+      <p class="mt-4 max-w-xs leading-relaxed">Office of the Dean of Resources &amp; Alumni (DoRA), Indian Institute of Technology Kanpur, Kanpur &ndash; 208016, Uttar Pradesh, India.</p>
+    </div>
+    <div>
+      <p class="text-white font-semibold mb-3">Quick links</p>
+      <ul class="space-y-2">
+        <li><a href="#about" class="hover:text-white">About the Program</a></li>
+        <li><a href="#commitment" class="hover:text-white">The Donor</a></li>
+        <li><a href="#eligibility" class="hover:text-white">Eligibility</a></li>
+        <li><a href="#benefits" class="hover:text-white">Benefits</a></li>
+        <li><a href="#contribute" class="hover:text-white">Contribute</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-white font-semibold mb-3">Contact</p>
+      <ul class="space-y-2">
+        <li><a href="mailto:dora_desk@iitk.ac.in" class="hover:text-white">dora_desk@iitk.ac.in</a></li>
+        <li>+91 512 679 7289</li>
+        <li><a href="https://iitk.ac.in/dora/" target="_blank" rel="noopener" class="hover:text-white">iitk.ac.in/dora</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10 text-center text-xs py-5">&copy; 2026 Indian Institute of Technology Kanpur. All rights reserved.</div>
+</footer>
+
+<!-- Sticky mobile CTA -->
+<div id="stickyCta" class="md:hidden fixed bottom-0 inset-x-0 z-30 p-3 bg-cream-50/95 backdrop-blur border-t border-cream-300 translate-y-full transition-transform duration-300">
+  <a href="#contribute" class="btn-primary block text-center w-full py-3.5 rounded-full font-semibold">Contribute Now →</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- NAV ---------- */
+const nav = document.getElementById('nav');
+const setNav = () => nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+setNav(); window.addEventListener('scroll', setNav, {passive:true});
+document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.add('hidden')));
+
+/* ---------- HERO INTRO + PARALLAX ---------- */
+if (!reduce) {
+  gsap.timeline({defaults:{ease:'power3.out'}})
+    .from('#heroImg', {scale:1.15, duration:1.6, ease:'power2.out'}, 0)
+    .from('.hero-el', {y:30, opacity:0, duration:.9, stagger:.12}, .2);
+  gsap.from('#nav', {y:-20, opacity:0, duration:.6, delay:.3, clearProps:'all'});
+  gsap.to('#heroImg', {yPercent:12, ease:'none', scrollTrigger:{trigger:'#top', start:'top top', end:'bottom top', scrub:true}});
+  gsap.fromTo('#journeyImg', {yPercent:-15}, {yPercent:0, ease:'none', scrollTrigger:{trigger:'#contribute', start:'top bottom', end:'bottom top', scrub:true}});
+}
+
+/* ---------- SCROLL REVEALS ---------- */
+gsap.utils.toArray('.reveal').forEach(el => {
+  if (reduce) { el.style.opacity = 1; return; }
+  gsap.fromTo(el, {y:28, opacity:0}, {y:0, opacity:1, duration:.9, ease:'power3.out', clearProps:'transform', scrollTrigger:{trigger:el, start:'top 88%', once:true}});
+});
+gsap.utils.toArray('.img-zoom img').forEach(img => {
+  if (reduce) return;
+  gsap.fromTo(img, {scale:1.15}, {scale:1, ease:'none', scrollTrigger:{trigger:img, start:'top bottom', end:'bottom top', scrub:1}});
+});
+gsap.utils.toArray('.stagger-grid').forEach(grid => {
+  if (reduce) return;
+  gsap.from(grid.children, {y:40, opacity:0, duration:.8, stagger:.14, ease:'power3.out', clearProps:'transform,opacity', scrollTrigger:{trigger:grid, start:'top 85%', once:true}});
+});
+gsap.utils.toArray('h2.font-display').forEach(h => {
+  if (reduce || h.closest('.reveal')) return;
+  gsap.from(h, {y:24, opacity:0, duration:.8, ease:'power3.out', scrollTrigger:{trigger:h, start:'top 90%', once:true}});
+});
+
+/* ---------- ELIGIBILITY CARDS: GSAP hover ---------- */
+document.querySelectorAll('.elig-card').forEach(card => {
+  const icon = card.querySelector('.elig-icon'), title = card.querySelector('.elig-title');
+  gsap.set(card, {transformPerspective:1000});
+  const rx = gsap.quickTo(card, 'rotationX', {duration:.5, ease:'power3', overwrite:false}), ry = gsap.quickTo(card, 'rotationY', {duration:.5, ease:'power3', overwrite:false});
+  card.addEventListener('mouseenter', () => {
+    card.classList.add('is-hover');
+    if (reduce) return;
+    gsap.to(card, {y:-10, boxShadow:'0 32px 60px -24px rgba(58,33,24,.38)', duration:.45, ease:'power3.out'});
+    gsap.fromTo(icon, {rotate:-8, scale:.9}, {rotate:0, scale:1.12, duration:.6, ease:'back.out(2.5)'});
+    gsap.to(title, {x:4, color:'#A83E24', duration:.35, ease:'power2.out'});
+  });
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left)+'px'); card.style.setProperty('--my', (e.clientY - r.top)+'px');
+    if (reduce) return;
+    ry(((e.clientX - r.left)/r.width - .5) * 7); rx(-((e.clientY - r.top)/r.height - .5) * 7);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.classList.remove('is-hover');
+    if (reduce) return;
+    rx(0); ry(0);
+    gsap.to(card, {y:0, boxShadow:'0 10px 30px -18px rgba(58,33,24,.18)', duration:.5, ease:'power3.out'});
+    gsap.to(icon, {scale:1, rotate:0, duration:.4, ease:'power2.out'});
+    gsap.to(title, {x:0, color:'#3A2118', duration:.35});
+  });
+});
+
+/* ---------- TOUCH DEVICES ---------- */
+if (!window.matchMedia('(hover:hover)').matches) {
+  document.querySelectorAll('.elig-card').forEach(card => {
+    card.addEventListener('touchstart', () => card.classList.add('is-touch','is-hover'), {passive:true});
+    ['touchend','touchcancel'].forEach(ev => card.addEventListener(ev, () => setTimeout(() => card.classList.remove('is-touch','is-hover'), 350), {passive:true}));
+  });
+}
+
+/* ---------- BUTTON / NAV HOVER ---------- */
+if (window.matchMedia('(hover:hover)').matches && !reduce) {
+  document.querySelectorAll('.btn-primary, .btn-white').forEach(b => {
+    b.addEventListener('mouseenter', () => gsap.to(b, {scale:1.04, duration:.3, ease:'power2.out'}));
+    b.addEventListener('mouseleave', () => gsap.to(b, {scale:1, duration:.3, ease:'power2.out'}));
+  });
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.addEventListener('mouseenter', () => gsap.fromTo(a, {y:0}, {y:-2, duration:.25, ease:'power2.out'}));
+    a.addEventListener('mouseleave', () => gsap.to(a, {y:0, duration:.25}));
+  });
+}
+
+/* ---------- STICKY MOBILE CTA (hidden on hero and on the contribute banner itself) ---------- */
+ScrollTrigger.create({trigger:'#about', start:'top 60%', endTrigger:'#contribute', end:'top 80%',
+  onToggle(self){ document.getElementById('stickyCta').classList.toggle('translate-y-full', !self.isActive); }});
+</script>
+</body>
+</html>
